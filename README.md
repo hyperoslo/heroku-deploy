@@ -50,12 +50,12 @@ At present, only Ruby on Rails is supported. Deploying any other applications? P
 
 ### [Ruby on Rails](https://github.com/hyperoslo/heroku-deploy/blob/master/lib/heroku/command/deploy/packs/rails.rb)
 
-* Maintenance on
+* Maintenance mode on
 * Code deployment
 * Database migrations
 * Restart dynos
   * Ensures all processes have introspected any database schema afresh (possibly affected by migrations)
-* Maintenance off
+* Maintenance mode off
 
 
 ## Contributing
