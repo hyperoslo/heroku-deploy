@@ -44,9 +44,9 @@ heroku deploy -r staging
 
 ## Features
 
-* Support for multiple languages and frameworks using deploy packs (see below)
+* Supports multiple languages and frameworks using deploy packs (see below)
 * Streams output from subcommands
-* Rely on UNIX exit statuses to abort deployment early in case of failure
+* Relies on UNIX exit statuses to abort deployment early in case of failure
 
 
 ## Deploy Packs
