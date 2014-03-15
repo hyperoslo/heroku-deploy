@@ -6,6 +6,8 @@ Deploying your applications to Heroku should never involve manually chaining she
 
 Licensed under the **MIT** license, see LICENSE for more information.
 
+![Heroku Deploy](http://office.moonsphere.net/heroku-deploy.png)
+
 
 ## Installation
 
