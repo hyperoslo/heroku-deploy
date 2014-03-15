@@ -1,5 +1,7 @@
 # Heroku Deploy
 
+[![Code Climate](https://codeclimate.com/github/hyperoslo/heroku-deploy.png)](https://codeclimate.com/github/hyperoslo/heroku-deploy)
+
 Deploying your applications to Heroku should never involve manually chaining shell commands together.
 
 **Supported Ruby versions: 1.9.3 or higher**
