@@ -44,9 +44,18 @@ heroku deploy -r staging
 
 ## Deploy Packs
 
-At present, only the Rails deploy pack is provided.
+A deploy pack represents a set of deployment instructions for a given language or framework. These instructions could range from turning on maintenance mode, scaling processes to scheduling backups.
 
-Deploying any other applications? Please open a pull request!
+At present, only Ruby on Rails is supported. Deploying any other applications? Please open a pull request!
+
+### [Ruby on Rails](https://github.com/hyperoslo/heroku-deploy/blob/master/lib/heroku/command/deploy/packs/rails.rb)
+
+* Maintenance on
+* Code deployment
+* Database migrations
+* Restart dynos
+  * Ensures all processes have introspected any database schema afresh (possibly affected by migrations)
+* Maintenance off
 
 
 ## Contributing
