@@ -28,9 +28,9 @@ class Heroku::Command::Deploy < Heroku::Command::Base
     begin
       pack = Pack.detect.new(app, remote)
       pack.deploy!(branch)
-      display("\e[92mDeployment successful.")
+      display("\e[92mDeployment successful.\e[0m")
     rescue CommandExecutionFailure
-      error("\e[91m\e[5mDeployment aborted.")
+      error("\e[91m\e[5mDeployment aborted.\e[0m")
     end
   end
 
