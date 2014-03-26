@@ -77,4 +77,4 @@ At present, only Ruby on Rails is supported. Deploying any other applications? P
 ## Credits
 
 Hyper made this. We're a digital communications agency with a passion for good code,
-and if you're using this library we probably want to hire you.
+and if you're using this plugin we probably want to hire you.
