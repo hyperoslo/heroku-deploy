@@ -17,6 +17,8 @@ class Heroku::Command::Deploy < Heroku::Command::Base
     branch = shift_argument || 'master'
     validate_arguments!
 
+    Heroku::Auth.check
+
     unless remotes = git_remotes
       error('No Heroku remotes detected.')
     end
