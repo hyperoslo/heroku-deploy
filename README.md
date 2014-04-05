@@ -1,6 +1,6 @@
 # Heroku Deploy
 
-[![Code Climate](https://codeclimate.com/github/hyperoslo/heroku-deploy.png)](https://codeclimate.com/github/hyperoslo/heroku-deploy)
+[![Code Climate](https://img.shields.io/codeclimate/github/hyperoslo/heroku-deploy.svg)](https://codeclimate.com/github/hyperoslo/heroku-deploy)
 
 Deploying your applications to Heroku should never involve manually chaining shell commands together.
 
