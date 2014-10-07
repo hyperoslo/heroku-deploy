@@ -25,4 +25,9 @@ class Heroku::Command::Deploy::Pack
     @remote = remote
   end
 
+  # Deploys given branch
+  def deploy!(branch)
+    raise NotImplementedError
+  end
+
 end
