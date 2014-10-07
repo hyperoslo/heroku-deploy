@@ -1,5 +1,5 @@
 require 'heroku/command/deploy'
 require 'heroku/command/deploy/helpers'
 require 'heroku/command/deploy/pack'
-require 'heroku/command/deploy/packs/rails'
-require 'heroku/command/deploy/packs/django'
+require 'heroku/command/deploy/pack/rails'
+require 'heroku/command/deploy/pack/django'
