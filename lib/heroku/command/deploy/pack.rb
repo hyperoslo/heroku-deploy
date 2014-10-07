@@ -20,9 +20,10 @@ class Heroku::Command::Deploy::Pack
   end
 
   # Initializes deploy pack
-  def initialize(app, remote)
+  def initialize(app, remote, options)
     @app = app
     @remote = remote
+    @options = options
   end
 
   # Deploys given branch

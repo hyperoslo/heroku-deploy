@@ -12,6 +12,7 @@ class Heroku::Command::Deploy < Heroku::Command::Base
   #
   #   -a, --app    APP     # the app to deploy to
   #   -r, --remote REMOTE  # the git remote to deploy to, default 'heroku'
+  #   --dry-run            # dry-runs deployment
   #
   def index
     branch = shift_argument || 'master'
@@ -28,7 +29,7 @@ class Heroku::Command::Deploy < Heroku::Command::Base
     end
 
     begin
-      pack = Pack.detect.new(app, remote)
+      pack = Pack.detect.new(app, remote, options)
       pack.deploy!(branch)
       display("\e[92mDeployment successful.\e[0m")
     rescue CommandExecutionFailure

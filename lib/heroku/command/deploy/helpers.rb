@@ -10,29 +10,35 @@ module Heroku::Command::Deploy::Helpers
   #
   # Options:
   #   :out (io, defaults to $stdout)
+  #   :dry_run (whether to execute any commands, defaults to false)
   #
   def run(command, options = {}, &block)
-    options = options.merge!(
-      out: $stdout
-    )
+    options = {
+      out: $stdout,
+      dry_run: false
+    }.merge(@options).merge(options)
 
     buffer = StringIO.new
 
-    PTY.spawn(command) do |output, input, pid|
-      begin
-        while !output.eof?
-          chunk = output.readpartial(1024)
-          buffer << chunk
-          options[:out].print(chunk) if options[:out]
+    if options[:dry_run]
+      options[:out].puts(" $ #{command}")
+    else
+      PTY.spawn(command) do |output, input, pid|
+        begin
+          while !output.eof?
+            chunk = output.readpartial(1024)
+            buffer << chunk
+            options[:out].print(chunk) if options[:out]
+          end
+        rescue Errno::EIO
+        ensure
+          Process.wait(pid)
         end
-      rescue Errno::EIO
-      ensure
-        Process.wait(pid)
       end
-    end
 
-    if !$?.success? || (block_given? && !block.call(buffer.string))
-      raise Heroku::Command::Deploy::CommandExecutionFailure
+      if !$?.success? || (block_given? && !block.call(buffer.string))
+        raise Heroku::Command::Deploy::CommandExecutionFailure
+      end
     end
 
     buffer.string
