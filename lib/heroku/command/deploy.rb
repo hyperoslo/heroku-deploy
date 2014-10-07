@@ -22,23 +22,23 @@ class Heroku::Command::Deploy < Heroku::Command::Base
     Heroku::Auth.check
 
     unless remotes = git_remotes
-      error('No Heroku remotes detected.')
+      error('No Heroku remotes detected.'.red)
     end
 
     unless remote = remotes.key(app)
-      error("Remote for #{app} was not found.")
+      error("Remote for #{app} was not found.".red)
     end
 
     begin
       pack = Pack.detect.new(app, remote, options)
       pack.deploy!(branch)
-      display("\e[92mDeployment successful.\e[0m")
+      display('Deployment successful.'.green)
     rescue Pack::NotFound
       error("\e[91mNo suitable deploy pack found.\e[0m")
     rescue Pack::AmbiguousApp
       error("\e[91mAmbiguous application, multiple deploy packs apply.\e[0m")
     rescue CommandExecutionFailure
-      error("\e[91m\e[5mDeployment aborted.\e[0m")
+      error('Deployment aborted.'.red.blink)
     end
   end
 
