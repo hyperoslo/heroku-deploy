@@ -13,6 +13,7 @@ class Heroku::Command::Deploy < Heroku::Command::Base
   #   -a, --app    APP     # the app to deploy to
   #   -r, --remote REMOTE  # the git remote to deploy to, default 'heroku'
   #   --dry-run            # dry-runs deployment
+  #   --force              # forces code deployment
   #
   def index
     branch = shift_argument || 'master'
