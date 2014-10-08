@@ -44,12 +44,12 @@ module Heroku::Command::Deploy::Helpers
     buffer.string
   end
 
-  # Convenience shorthand for running given Heroku command
+  # Runs given Heroku command
   def heroku(command, options = {}, &block)
     run "heroku #{command} -a #{app}", options, &block
   end
 
-  # Convenience shorthand for running given command remotely on Heroku
+  # Runs given command remotely on Heroku
   def heroku_run(command, options = {})
 
     # Parse exit status from output manually as it is not provided by Heroku
