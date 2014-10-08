@@ -60,4 +60,19 @@ module Heroku::Command::Deploy::Helpers
 
   end
 
+  # Sets maintenance mode status
+  def maintenance(status)
+    heroku "maintenance:#{status}"
+  end
+
+  # Pushes given branch for code deployment
+  def push(branch)
+    run "git push #{@remote} #{branch}:master"
+  end
+
+  # Restarts all dynos
+  def restart
+    heroku 'ps:restart'
+  end
+
 end

@@ -2,13 +2,13 @@
 class Heroku::Command::Deploy::Pack::Django < Heroku::Command::Deploy::Pack
 
   def deploy!(branch)
-    heroku 'maintenance:on'
-    run "git push #{remote} #{branch}:master"
+    maintenance :on
+    push branch
 
     heroku_run 'python manage.py migrate'
-    heroku 'ps:restart'
+    restart
 
-    heroku 'maintenance:off'
+    maintenance :off
   end
 
 end

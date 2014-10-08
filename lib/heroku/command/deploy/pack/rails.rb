@@ -2,15 +2,15 @@
 class Heroku::Command::Deploy::Pack::Rails < Heroku::Command::Deploy::Pack
 
   def deploy!(branch)
-    heroku 'maintenance:on'
-    run "git push #{remote} #{branch}:master"
+    maintenance :on
+    push branch
 
     if migrations?
       heroku_run 'rake db:migrate'
-      heroku 'ps:restart'
+      restart
     end
 
-    heroku 'maintenance:off'
+    maintenance :off
   end
 
   def migrations?
