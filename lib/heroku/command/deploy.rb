@@ -34,9 +34,9 @@ class Heroku::Command::Deploy < Heroku::Command::Base
       pack.deploy!(branch)
       display('Deployment successful.'.green)
     rescue Pack::NotFound
-      error("\e[91mNo suitable deploy pack found.\e[0m")
+      error('No suitable deploy pack found.'.red)
     rescue Pack::AmbiguousApp
-      error("\e[91mAmbiguous application, multiple deploy packs apply.\e[0m")
+      error('Ambiguous application, multiple deploy packs apply.'.red)
     rescue CommandExecutionFailure
       error('Deployment aborted.'.red.blink)
     end
