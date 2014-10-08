@@ -3,20 +3,38 @@ class Heroku::Command::Deploy::Pack
 
   include Heroku::Command::Deploy::Helpers
 
+  # Raised when a pack could not be found
+  class NotFound < StandardError; end
+
+  # Raised when more than one pack applies
+  class AmbiguousApp < StandardError; end
+
   attr_reader :app, :remote
 
-  # Attempts to detect deploy pack to use for app in given directory
-  def self.detect(dir = Dir.pwd)
-    # TODO: Improve on the detection implementation. Now we default
-    # to Rails for Ruby projects, and Django for Python projects.
+  class << self
 
-    if File.exist?(File.join(dir, 'Gemfile'))
-      # Presence of a `Gemfile` indicates a Ruby application
-      Rails
-    elsif File.exist?(File.join(dir, 'requirements.txt'))
-      # Presence of a `requirements.txt` file indicates a Python application.
-      Django
+    # Registers given pack automatically when extending base pack
+    def inherited(pack)
+      (@registry ||= []) << pack
     end
+
+    # Attempts to detect deploy pack to use for app in given directory
+    def detect(dir = Dir.pwd)
+      candidates = @registry.find_all do |pack|
+        pack.applicable? dir
+      end
+
+      raise NotFound if candidates.empty?
+      raise AmbiguousApp if candidates.length > 1
+
+      candidates.first
+    end
+
+    # Whether this pack applies for the given directory
+    def applicable?(dir = Dir.pwd)
+      false
+    end
+
   end
 
   # Initializes deploy pack
