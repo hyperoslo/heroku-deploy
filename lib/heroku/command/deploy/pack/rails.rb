@@ -2,15 +2,14 @@
 class Heroku::Command::Deploy::Pack::Rails < Heroku::Command::Deploy::Pack
 
   def deploy!(branch)
-    maintenance :on
     push branch
 
     if migrations?
+      maintenance :on
       heroku_run 'rake db:migrate'
       restart
+      maintenance :off
     end
-
-    maintenance :off
   end
 
   def migrations?
