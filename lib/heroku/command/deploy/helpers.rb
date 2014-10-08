@@ -66,8 +66,22 @@ module Heroku::Command::Deploy::Helpers
   end
 
   # Pushes given branch for code deployment
-  def push(branch)
-    run "git push #{@remote} #{branch}:master"
+  #
+  # Options:
+  #
+  #   :force (whether to force code deployment, defaults to false)
+  #   :remote (remote to push code to, defaults to pack remote)
+  #
+  def push(branch, options = {})
+    options = {
+      force: false,
+      remote: @remote
+    }.merge(@options).merge(options)
+
+    force = ('--force' if options[:force])
+    remote = options[:remote]
+
+    run "git push #{remote} #{branch}:master #{force}"
   end
 
   # Restarts all dynos
