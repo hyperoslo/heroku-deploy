@@ -21,7 +21,7 @@ module Heroku::Command::Deploy::Helpers
     buffer = StringIO.new
 
     if options[:dry_run]
-      options[:out].puts(" $ #{command}")
+      options[:out].puts(" $ #{command}".gray)
     else
       PTY.spawn(command) do |output, input, pid|
         begin
