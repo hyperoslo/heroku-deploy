@@ -62,7 +62,7 @@ At present, only Ruby on Rails and Django is supported. Deploying any other appl
 * Maintenance mode on
 * Database migrations
 * Restart dynos
-  * Ensures all processes have introspected any database schema afresh (possibly affected by migrations)
+  * Ensures all processes are in sync after potential database migrations
 * Maintenance mode off
 
 ### [Django](https://github.com/hyperoslo/heroku-deploy/blob/master/lib/heroku/command/deploy/packs/django.rb)
@@ -71,7 +71,7 @@ At present, only Ruby on Rails and Django is supported. Deploying any other appl
 * Maintenance mode on
 * Database migrations
 * Restart dynos
-  * Ensures all processes have introspected any database schema afresh (possibly affected by migrations)
+  * Ensures all processes are in sync after potential database migrations
 * Maintenance mode off
 
 
