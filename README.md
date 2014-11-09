@@ -53,7 +53,7 @@ heroku deploy -r staging
 
 A deploy pack represents a set of deployment instructions for a given language or framework. These instructions could range from turning on maintenance mode, scaling processes to scheduling backups.
 
-At present, only Ruby on Rails and Django is supported. Deploying any other applications? Please open a pull request!
+At present, only Ruby on Rails and Django are supported. Deploying any other applications? Please open a pull request!
 
 ### [Ruby on Rails](https://github.com/hyperoslo/heroku-deploy/blob/master/lib/heroku/command/deploy/packs/rails.rb)
 
