@@ -55,7 +55,7 @@ A deploy pack represents a set of deployment instructions for a given language o
 
 At present, only Ruby on Rails and Django are supported. Deploying any other applications? Please open a pull request!
 
-### [Ruby on Rails](https://github.com/hyperoslo/heroku-deploy/blob/master/lib/heroku/command/deploy/packs/rails.rb)
+### [Ruby on Rails](https://github.com/hyperoslo/heroku-deploy/blob/master/lib/heroku/command/deploy/pack/rails.rb)
 
 
 * Code deployment
@@ -65,7 +65,7 @@ At present, only Ruby on Rails and Django are supported. Deploying any other app
   * Ensures all processes are in sync after potential database migrations
 * Maintenance mode off
 
-### [Django](https://github.com/hyperoslo/heroku-deploy/blob/master/lib/heroku/command/deploy/packs/django.rb)
+### [Django](https://github.com/hyperoslo/heroku-deploy/blob/master/lib/heroku/command/deploy/pack/django.rb)
 
 * Code deployment
 * Maintenance mode on
