@@ -74,6 +74,14 @@ At present, only Ruby on Rails and Django are supported. Deploying any other app
   * Ensures all processes are in sync after potential database migrations
 * Maintenance mode off
 
+### [Symfony](https://github.com/hyperoslo/heroku-deploy/blob/master/lib/heroku/command/deploy/pack/symfony.rb)
+
+* Code deployment
+* Maintenance mode on
+* Database migrations
+* Restart dynos
+  * Ensures all processes are in sync after potential database migrations
+* Maintenance mode off
 
 ## Contributing
 
