@@ -1,6 +1,6 @@
 require 'heroku/command/base'
 
-# deploys applications
+# Deploys applications
 class Heroku::Command::Deploy < Heroku::Command::Base
 
   # Raised when a command failed to abort deployment
